@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import App from './react/components/App'
+import { Provider } from 'react-redux'
+import store from './react/redux/store'
 
-const App = () => {
-    return (
-        <div>
-            <h1>Hello React in Rails! It's really funny.</h1>
-        </div>
-    )
-}
-
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
+)
