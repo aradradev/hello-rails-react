@@ -10,6 +10,7 @@ module HelloRailsReact
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -18,5 +19,13 @@ module HelloRailsReact
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.middleware.insert_before 0, Rack::Cors do
+  allow do
+    origins 'http://127.0.0.1:3000'  # The origin of your React frontend
+    resource '*',
+      headers: :any,
+      methods: [:get, :post, :put, :patch, :delete, :options]
+  end
+end
   end
 end
